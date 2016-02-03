@@ -62,7 +62,7 @@ def ws_city(message):
 def auto_print(message):
 	room = session.get('room')
 	
-	emit("atype",{'name':session.get('name')+" is typing ....",'press':message['press']},room=room,namespace='/chat')
+	emit("atype",{'name':session.get('name')+" is typing",'press':message['press']},room=room,namespace='/chat')
 
 
 

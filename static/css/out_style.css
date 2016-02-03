@@ -1,0 +1,62 @@
+body{
+padding-bottom: 50px;
+}
+.navbar-fixed-bottom{
+    padding-top: 10px;
+    height: 40px;
+    /*background-color: black;*/
+}
+.navbar
+{
+    background-color: black;
+}
+#avatar{
+    filter:blur(10px);
+    height:20px;
+}
+ 
+.typing
+{
+	display: inline-block;
+	margin-left: 4px;
+	size: 10px;
+}
+
+.typing span
+{
+	font-size: 20px;
+}
+@keyframes blink {
+
+    0% {
+      opacity: .2;
+    }
+
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .2;
+    }
+}
+
+.typing span {
+
+    animation-name: blink;
+
+    animation-duration: 1.4s;
+
+    animation-iteration-count: infinite;
+
+    animation-fill-mode: both;
+}
+
+.typing span:nth-child(2) {
+
+    animation-delay: .2s;
+}
+
+.typing span:nth-child(3) {
+
+    animation-delay: .4s;
+}
