@@ -1,4 +1,4 @@
-var col = 'rgb(' + Math.floor(Math.random()*256)+ ',' +Math.floor(Math.random()*256) +','+Math.floor(Math.random()*256) +')';
+var col = "#1565C0";
 
 $(document).ready(function()
 	{

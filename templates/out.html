@@ -11,29 +11,67 @@
     <link href={{url_for( 'static',filename='font-awesome-4.5.0/css/font-awesome.min.css' )}} rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC:700|Black+Ops+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css">
 </head>
 
-<body>
-    <div id="avatar">
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div id="masthead">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>Chat Box
+                        <p class="lead">Share Your Thoughts, The Faster Way</p>
+                    </h1>
+                </div>
+                <div class="col-md-5">
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-sm-6 connect">
+                                Let's Connect faster!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/container-->
     </div>
-    <h1>ENTER SOME TEXT.</h1>
-    <h1>Welcome {{name}}</h1>
-    <p id="link_opener"></p>
-    <p id='join'></p>
-    <h1>{{room}}</h1>
-    <form method="post" action="#" id="dispform">
-        <p id="aut_type" class="typer"></p>
-        <label>TEXT</label>
-        <input type="text" id="disp" onkeypress='typeauto()' onkeyup='type_auto_up()'></input>
-        <input type="submit" value="Submit"></input>
-    </form>
-    <div id="msg-list"></div>
-
-
+    <!--/masthead-->
+    <div class="container">
+        <div class="row">
+            <div id="avatar"></div>
+            <div class="col-md-3" id="leftCol">
+                <div class="nav nav-stacked" id="sidebar">
+                    <h1>Welcome {{name}}</h1>
+                    <p id="link_opener"></p>
+                    <p id='join'></p>
+                    <h1>{{room}}</h1>
+                </div>
+            </div>
+            <div class="col-md-9 message">
+                <div id="msg-list"></div>
+            </div>
+            <div class="row">
+                <div class="navbar navbar-fixed-bottom">
+                    <form method="post" action="#" id="dispform">
+                        <p id="aut_type" class="typer"></p>
+                        <label>TEXT</label>
+                        <input type="text" id="disp" onkeypress='typeauto()' onkeyup='type_auto_up()' required autocomplete="off"></input>
+                        <button class="button button-block" />Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src={{url_for( 'static',filename='js/avatar.js' )}}></script>
+    <script src={{url_for( 'static',filename='js/out_script.js' )}}></script>
     <script src={{url_for( 'static',filename='js/bootstrap.min.js' )}}></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+    <script>
+    prettyPrint();
+    </script>
     <script type="text/javascript" charset="utf-8">
     var url = "http://" + document.domain + ":" + location.port;
     var socket = io.connect(url + "/chat");
@@ -46,9 +84,11 @@
         $('#disp').val('');
         return false;
     });
+
     socket.on('disp', function(msg) {
         $("#msg-list").prepend('<h3>' + msg.nam + msg.disp + '</h3>');
     });
+
 
     var timer;
 
